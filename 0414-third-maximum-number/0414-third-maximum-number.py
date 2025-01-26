@@ -1,9 +1,16 @@
 class Solution:
     def thirdMax(self, nums: List[int]) -> int:
-        myset = set(nums)
-        if len(myset)<3:
-            return max(nums)
-        myset.remove(max(myset))
-        myset.remove(max(myset))
+        
+        nums.sort(reverse = True)
+        count = 1
 
-        return max(myset)
+
+        for i in range(1, len(nums)):
+            if nums[i] != nums[i-1]:
+                count+=1
+            if count == 3:
+                return nums[i]
+        return max(nums)
+
+
+
