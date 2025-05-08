@@ -22,4 +22,4 @@ class Solution:
                 if new_cost < cache[__row][__col]:
                     cache[__row][__col] = new_cost
                     heappush(min_heap, (new_cost, __row, __col))
-        return cache[-1][-1]
+        return cache[len(cache)-1][len(cache)-1]
