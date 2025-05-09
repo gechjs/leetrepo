@@ -15,7 +15,7 @@ class Solution:
 
         @cache
         def dfs(pos, curr, oddCnt):
-            # If the remaining positions cannot complete a legal placement, or the sum of the elements in the current odd positions is greater than the target value
+          
             if oddCnt < 0 or psum[pos] < oddCnt or curr > target:
                 return 0
             if pos > 9:
