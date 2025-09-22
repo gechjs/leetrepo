@@ -1,14 +1,15 @@
 class Solution:
     def maxFrequencyElements(self, nums: List[int]) -> int:
-        fre = Counter(nums)
+        
+        count = Counter(nums)
+        maxval = max(count.values())
 
-        arr = list(fre.values())
-        maxfre = max(arr)
-        count = 0
-        for i in range(len(arr)):
-            if arr[i] == maxfre:
-                count+=maxfre
-        else:
-            return count
+        ans = 0
+
+        for num in count.values():
+            if num == maxval:
+                ans+= maxval
+        return ans
+
 
             
