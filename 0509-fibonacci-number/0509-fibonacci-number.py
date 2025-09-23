@@ -1,8 +1,13 @@
 class Solution:
     def fib(self, n: int) -> int:
-        if n==1:
-            return 1
-        if n==0:
-            return 0
+
+        def fibo(num):
+            if num<=1:
+                return num
+            
+            return fibo(num-1)+fibo(num-2)
         
-        return self.fib(n-1)+self.fib(n-2)
+        return fibo(n)
+
+
+      
