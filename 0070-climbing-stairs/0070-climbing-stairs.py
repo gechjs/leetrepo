@@ -6,10 +6,8 @@ class Solution:
         @cache
         def fun(num):
             
-            if num==n:
+            if num==1 or num == 0:
                 return 1
-            if num==n-1:
-                return fun(num+1)
-            return fun(num+1) + fun(num+2)
+            return fun(num-1) + fun(num-2)
         
-        return fun(1)+fun(2)
+        return fun(n)
