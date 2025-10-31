@@ -1,13 +1,8 @@
 class Solution:
     def getSneakyNumbers(self, nums: List[int]) -> List[int]:
-        
+        count = Counter(nums)
         ans = []
-        seen = set()
-        for num in nums:
-            if num in seen:
-                ans.append(num)
-                if len(ans)==2:
-                    break
-            else:
-                seen.add(num)
+        for key in count:
+            if count[key]>1:
+                ans.append(key)
         return ans
