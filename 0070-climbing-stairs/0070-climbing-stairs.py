@@ -1,13 +1,12 @@
 class Solution:
     def climbStairs(self, n: int) -> int:
         
-        if n==1:
-            return 1
         @cache
-        def fun(num):
-            
-            if num==1 or num == 0:
+        def dp(num):
+            if num == 0:
                 return 1
-            return fun(num-1) + fun(num-2)
+            if num<0:
+                return 0
         
-        return fun(n)
+            return dp(num-1)+dp(num-2)
+        return dp(n)
