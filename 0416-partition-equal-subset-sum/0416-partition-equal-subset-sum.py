@@ -5,23 +5,32 @@ class Solution:
             return False
         
         half = sum(nums)//2
-        track = False
-        def dp(arr, _sum):
-            nonlocal track
-            if not arr:
-               return 
-            if arr[0]+_sum> half:
-                dp(arr[1:], _sum)
-                return
-            if arr[0]+_sum == half:
-                track = True
-                return 
-            else:
-                dp(arr[1:], _sum+arr[0])
-                dp(arr[1:], _sum)
+        seen = set([0])
 
-        dp(nums, 0)
-        return track
+        for num in nums:
+            myset  = seen.copy()
+            for n in myset:
+                seen.add(n+num)
+            if half in seen:
+                return True
+        return False
+        # track = False
+        # def dp(arr, _sum):
+        #     nonlocal track
+        #     if not arr:
+        #        return 
+        #     if arr[0]+_sum> half:
+        #         dp(arr[1:], _sum)
+        #         return
+        #     if arr[0]+_sum == half:
+        #         track = True
+        #         return 
+        #     else:
+        #         dp(arr[1:], _sum+arr[0])
+        #         dp(arr[1:], _sum)
+
+        # dp(nums, 0)
+        # return track
 
                 
 
