@@ -7,16 +7,19 @@ class Solution:
         sell = 0
         for i in range(len(prices)):
             
-            if buy>prices[i]:
-                buy = prices[i]
-                sell = 0
-            elif sell>prices[i]:
-                ans+=sell-buy
+            if sell>prices[i] :
+                ans=ans+sell-buy
                 sell = 0
                 buy = prices[i]
+                
+            elif buy>prices[i]:
+
+                buy = prices[i]
+                sell = 0
             else:
                 sell = max(sell, prices[i])
         if sell-buy> 0:
             ans = ans + sell-buy
+        
         return ans
 
