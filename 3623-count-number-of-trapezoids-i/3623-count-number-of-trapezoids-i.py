@@ -11,10 +11,8 @@ class Solution:
         print(count)
         for key, val in count.items():
             if point==0:
-                n = val -1
-                point+= n*(n+1)//2
+                point+= val*(val-1)//2
             else:
-                n=val-1
-                ans+=point*(n*(n+1)//2)
-                point+=n*(n+1)//2
+                ans+=point*(val*(val-1)//2)
+                point+=val*(val-1)//2
         return ans%(10**9 +7)
