@@ -8,7 +8,7 @@ class Solution:
         
         ans = 0
         point = 0
-        print(count)
+       
         for key, val in count.items():
             if point==0:
                 point+= val*(val-1)//2
