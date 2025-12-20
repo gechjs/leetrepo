@@ -8,15 +8,15 @@ class Solution:
                 maxprofit= prices[i]
                 for j in range(i+2, len(prices)):
                     maxprofit = max(maxprofit, prices[i]+dp(j, "buy"))
-                return maxprofit
-               
+                return maxprofit  
             else:
                 maxprofit = float("-inf")
                 for j in range(i+1, len(prices)):
-                    maxprofit = max(maxprofit,-1*prices[i]+dp(j, "sell"))
+                    if prices[j]>prices[i]:
+                        maxprofit = max(maxprofit,-1*prices[i]+dp(j, "sell"))
                 maxprofit = max(maxprofit, 0)
                 return maxprofit
         profit = 0
-        for i in range(len(prices)):
+        for i in range(len(prices)-1):
             profit= max(profit, dp(i, "buy"))
         return profit
