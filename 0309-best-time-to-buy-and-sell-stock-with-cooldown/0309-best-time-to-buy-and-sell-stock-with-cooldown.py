@@ -6,11 +6,7 @@ class Solution:
         def dp(i, t_type):
             if (i, t_type) in memo:
                 return memo[(i, t_type)]
-            if i==len(prices)-1:
-                if t_type=="sell":
-                    return prices[i]
-                else:
-                    return 0
+           
                 
             if t_type=="sell":
                 maxprofit= prices[i]
@@ -22,7 +18,7 @@ class Solution:
                 maxprofit = float("-inf")
                 for j in range(i+1, len(prices)):
                     maxprofit = max(maxprofit,-1*prices[i]+dp(j, "sell"))
-                memo[(i, t_type)]=maxprofit
+                memo[(i, t_type)]=max(maxprofit, 0)
                 return memo[(i, t_type)]
         profit = 0
         for i in range(len(prices)):
