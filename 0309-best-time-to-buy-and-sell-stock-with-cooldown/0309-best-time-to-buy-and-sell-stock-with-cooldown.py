@@ -4,22 +4,11 @@ class Solution:
       
         @cache
         def dp(i, t_type):
-            if t_type=="sell":
-                maxprofit= prices[i]
-                for j in range(i+2, len(prices)):
-                    maxprofit = max(maxprofit, prices[i]+dp(j, "buy"))
-                return maxprofit  
+            if i>=len(prices):
+                return 0
+            if t_type==False:
+                return max(prices[i]+dp(i+2, True), dp(i+1, False)) 
             else:
-                maxprofit = float("-inf")
-                for j in range(i+1, len(prices)):
-                    if prices[j]>prices[i]:
-                        maxprofit = max(maxprofit,-1*prices[i]+dp(j, "sell"))
-                maxprofit = max(maxprofit, 0)
-                return maxprofit
-        profit = 0
-        minval = prices[0]
-        for i in range(len(prices)-1):
-            if prices[i]<=minval:
-                profit= max(profit, dp(i, "buy"))
-                minval = prices[i]
-        return profit
+                return max(max(-1*prices[i]+dp(i+1, False), dp(i+1, True)), 0)
+                
+        return dp(0, True)
