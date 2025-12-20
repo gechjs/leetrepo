@@ -17,6 +17,9 @@ class Solution:
                 maxprofit = max(maxprofit, 0)
                 return maxprofit
         profit = 0
+        minval = prices[0]
         for i in range(len(prices)-1):
-            profit= max(profit, dp(i, "buy"))
+            if prices[i]<=minval:
+                profit= max(profit, dp(i, "buy"))
+                minval = prices[i]
         return profit
