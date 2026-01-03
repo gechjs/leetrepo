@@ -1,11 +1,20 @@
 class Solution:
     def rob(self, nums: List[int]) -> int:
         
-        for i, num in enumerate(nums):
-            if i==0:
-                continue
-            if i==1:
-                nums[i] = max(nums[0], nums[1])
-            nums[i] = max(nums[i]+nums[i-2], nums[i-1])
-        return nums[-1]
+      n = len(nums)
+
+      memo = {}
+      def dp(i):
+        if i>=n:
+            return 0
+        if i == n-1:
+            return nums[i]
         
+        if i not in memo:
+            take = dp(i+2)+nums[i]
+            skip = dp(i+1)
+            memo[i] = max(take, skip)
+
+        return memo[i]
+      
+      return dp(0)
