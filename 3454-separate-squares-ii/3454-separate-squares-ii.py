@@ -26,7 +26,7 @@ class Solution:
                     end = b
             return res
 
-        # first pass to find total area
+        
         for y, typ, x1, x2 in events:
             if y > prev_y and xs:
                 h = y - prev_y
