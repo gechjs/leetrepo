@@ -15,6 +15,8 @@ class Solution:
             
             if curr==k:
                 ans = node.val
+                curr+=1
+                return
             curr+=1
             if node.right:
                 dfs(node.right)
