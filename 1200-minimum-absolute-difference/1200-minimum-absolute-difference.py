@@ -3,13 +3,16 @@ class Solution:
         
         arr.sort()
 
-        mindiff = arr[-1]-arr[0]
-        ans = []
-        for i in range(1, len(arr)):
-            mindiff = min(mindiff, arr[i]-arr[i-1])
-        
-        for i in range(1, len(arr)):
-            if arr[i]-arr[i-1]==mindiff:
+        ans = [[arr[0], arr[1]]]
+
+        for i in range(2, len(arr)):
+            diff = arr[i]-arr[i-1]
+            curr = ans[0][1]-ans[0][0]
+            if diff==curr:
                 ans.append([arr[i-1], arr[i]])
-        
+            elif diff<curr:
+                ans = [[arr[i], arr[i-1]]]
         return ans
+
+
+       
